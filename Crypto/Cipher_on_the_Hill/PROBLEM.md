@@ -8,4 +8,4 @@ Cipher:mqhm_gjj_larnlcwynk_jaxv
 cipher:macfjqujbv,gxxct,xixjgvw.j_rpzdmqktp
 ```
 
-给解密得到的字符里加上ACTF{}后提交
+给解密得到的字符里加上AURORA{}后提交
