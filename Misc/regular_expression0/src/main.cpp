@@ -96,6 +96,10 @@ void print_challenge(int length, const vector<string> &match, const vector<strin
 }
 
 int main() {
+  cout << "Welcome to regex challenge~" << endl
+       << "Complete 3 challenges and I'll give you flag" << endl;
+  sleep(5);
+
   init();
   string input;
   regex test;
