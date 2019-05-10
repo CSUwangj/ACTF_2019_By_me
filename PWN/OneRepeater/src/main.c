@@ -1,4 +1,5 @@
-//gcc  -m32 -fno-stack-protector -z execstack -o OneRepeater main.c
+//gcc  -m32 -fno-stack-protector -z execstack -o OneRepeater main.c && strip OneRepeater
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -22,20 +23,8 @@ void init() {
   alarm(60);
 }
 
-int check(char *buf, size_t size) {
-  for (size_t i = 0; i < size; ++i) {
-    if (buf[i] < 0x20 || buf[i] > 0x7F) {
-      puts("Unprintable char appear, can not repeat it!");
-      return FAIL;
-    }
-  }
-  return SUCCESS;
-}
-
 void input(char *buf, size_t size) {
-  do {
-    read(0, buf, sizeof(buf));
-  } while (check(buf, size) == FAIL);
+  read(0, buf, size);
 }
 
 void repeat(buf) {

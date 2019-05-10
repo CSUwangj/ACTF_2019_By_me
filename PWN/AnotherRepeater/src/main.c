@@ -1,4 +1,5 @@
 //gcc  -m32 -fno-stack-protector -z execstack -o AnotherRepeater main.c
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -24,8 +25,9 @@ void init() {
 
 int main() {
   init();
-  puts("There's brute repeater, it will repeat over and over again with no choice.")
-      puts("Be careful. How many chars you want to reapeat?") int a;
+  puts("There's brute repeater, it will repeat over and over again with no choice.");
+  puts("Be careful. How many chars you want to reapeat?");
+  int a;
   scanf("%d", a);
   if (a > 1024) {
     puts("No way, you can't repeat so many chars!");

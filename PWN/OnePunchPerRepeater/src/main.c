@@ -1,4 +1,5 @@
-//gcc -m32 -z relro -z now -fno-stack-protector -mpreferred-stack-boundary=2 main.c -o OnePunchPerRepeater
+//gcc -m32 -z relro -z now -fno-stack-protector -mpreferred-stack-boundary=2 main.c -o OnePunchPerRepeater && strip OnePunchPerRepeater
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
