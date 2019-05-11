@@ -1,4 +1,4 @@
-//gcc  -m32 -fno-stack-protector -z execstack -o AnotherRepeater main.c
+//gcc  -m32 -fno-stack-protector -z execstack -o AnotherRepeater AnotherRepeater.c
 #include <signal.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -35,7 +35,7 @@ void input() {
     exit(0);
   }
   uint16_t aa = a;
-  printf("%u\n", aa);
+  printf("%x %u\n", buf, aa);
   read(0, buf, aa);
   memcpy(str, buf, 1025);
 }
