@@ -1,8 +1,8 @@
 //gcc -m32 -s -fno-stack-protector -mpreferred-stack-boundary=2 OnePunchPerRepeater.c -o OnePunchPerRepeater
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <signal.h>
 
 #define SUCCESS 0
 #define FAIL 1
@@ -36,7 +36,7 @@ int main() {
     int option;
     puts(
         "What you want to do?\n"
-        "1) REPEAT SOMETHING EXCITING(No more than 0x60 chars)\n"
+        "1) REPEAT SOMETHING EXCITING(No more than 0x40 chars)\n"
         "2) Exit");
     scanf("%d", &option);
     getchar();
