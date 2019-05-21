@@ -38,14 +38,17 @@ void init() {
 }
 
 void generate(vector<int> &balls, size_t sz) {
+  balls.clear();
   size_t special = rand() % sz;
+  // cout << special << endl;
   for (int i = 0; i < sz; ++i) balls.push_back(1);
   balls[special] = (std::time(nullptr) & 1) * 2;
+  // cout << balls[special] << endl;
 }
 
 int main() {
   init();
-  const int rds[3][3] = {{0, 2, 3}, {1, 3, 13}, {2, 7, 1092}};
+  const int rds[3][3] = {{0, 2, 3}, {1, 3, 12}, {2, 7, 1092}};
   const string h = "h", l = "l";
   for (auto &rd : rds) {
     cout << "--------------------------------------------------------------------------------" << endl
@@ -58,6 +61,7 @@ int main() {
     generate(balls, rd[2]);
     for (int op = 0; op < rd[1]; ++op) {
       vector<int> left_input, right_input, all_input;
+      // cout << left_input.size() << right_input.size() << all_input.size() << endl;
       size_t amount, ball;
       cout << "How many balls do you want to put on left side of the balance?" << endl;
       cin >> amount;
@@ -92,7 +96,7 @@ int main() {
       for (auto b : right_input) right_weight += balls[b];
       if (left_weight > right_weight)
         cout << "The left side is heavier than the right side" << endl;
-      else if (left_weight > right_weight)
+      else if (left_weight < right_weight)
         cout << "The right side is heavier than the left side" << endl;
       else
         cout << "As heavy on both sides" << endl;
