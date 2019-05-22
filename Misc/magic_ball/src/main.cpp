@@ -48,7 +48,7 @@ void generate(vector<int> &balls, size_t sz) {
 
 int main() {
   init();
-  const int rds[3][3] = {{0, 2, 3}, {1, 3, 12}, {2, 7, 1092}};
+  const int rds[4][3] = {{0, 2, 3}, {1, 3, 9}, {2, 3, 12}, {3, 7, 1092}};
   const string h = "h", l = "l";
   for (auto &rd : rds) {
     cout << "--------------------------------------------------------------------------------" << endl

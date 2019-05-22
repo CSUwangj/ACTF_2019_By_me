@@ -3,14 +3,26 @@ from sets import Set
 import sys
 
 
-def round(io, weight):
+def round(io, weight, balls):
     st = Set()
     mp_n2c = {}
     mp_c2n = {}
     cw = 0
-    for i in range(3**weight):
+    i = 0
+    while cw < balls:
+        i += 1
         s = num_to_str(i, 3).rjust(weight, "0")
-        if clockwise(s):
+        if clockwise(s) and s not in st:
+            st.add(s)
+            mp_n2c[cw] = s
+            mp_c2n[s] = cw
+            cw += 1
+            s = next_clockwise(s)
+            st.add(s)
+            mp_n2c[cw] = s
+            mp_c2n[s] = cw
+            cw += 1
+            s = next_clockwise(s)
             st.add(s)
             mp_n2c[cw] = s
             mp_c2n[s] = cw
@@ -53,6 +65,14 @@ def round(io, weight):
         io.sendline("l")
 
 
+def next_clockwise(s):
+    return s\
+        .replace("0", "a")\
+        .replace("2", "0")\
+        .replace("1", "2")\
+        .replace("a", "1")
+
+
 def num_to_str(n, b, alphabet="0123456789abcdefghijklmnopqrstuvwxyz"):
     if not n:
         return "0"
@@ -81,12 +101,15 @@ else:
     io = process("./magic_ball.out")
     # context.log_level = "debug"
 
-print io.recvuntil("PWN challenge.")
+io.recvuntil("PWN challenge.")
+log.success("Game begin~")
 
-log.info("Round 0 with 2 weight...")
-round(io, 2)
-log.info("Round 1 with 3 weight...")
-round(io, 3)
-log.info("Round 2 with 7 weight...")
-round(io, 7)
+log.info("Round 0 with 2 weights 3 balls...")
+round(io, 2, 3)
+log.info("Round 1 with 3 weights 9 balls...")
+round(io, 3, 9)
+log.info("Round 2 with 3 weights 12 balls...")
+round(io, 3, 12)
+log.info("Round 3 with 7 weights 1092 balls...")
+round(io, 7, 1092)
 log.success(io.recvuntil("it~"))
