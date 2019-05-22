@@ -1,3 +1,4 @@
 *.vscode
 *.pyw
 *__py*
+*.gdb_history

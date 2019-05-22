@@ -50,7 +50,6 @@ if __name__ == "__main__":
     ct = encrypt(flag, key)
     f.write(ct+"\n")
     # To save your time, I'll omit the interactive step and give you plain-cipher pairs directly
-    # Hope you don't hit shift+enter
     for i in range(65536):
         pt = list(os.urandom(SZ))
         ct = encrypt_block(pt, key)
