@@ -3,7 +3,7 @@ from sets import Set
 import sys
 
 
-def round(io, weight, balls):
+def find_the_ball(io, weight, balls):
     st = Set()
     mp_n2c = {}
     mp_c2n = {}
@@ -104,12 +104,10 @@ else:
 io.recvuntil("PWN challenge.")
 log.success("Game begin~")
 
-log.info("Round 0 with 2 weights 3 balls...")
-round(io, 2, 3)
-log.info("Round 1 with 3 weights 9 balls...")
-round(io, 3, 9)
-log.info("Round 2 with 3 weights 12 balls...")
-round(io, 3, 12)
-log.info("Round 3 with 7 weights 1092 balls...")
-round(io, 7, 1092)
+rds = [[0, 2, 3], [1, 3, 9], [2, 3, 12], [3, 7, 1092]]
+
+for rd in rds:
+    log.info("Round {} with {} weights {} balls..."\
+        .format(rd[0], rd[1], rd[2]))
+    find_the_ball(io, rd[1], rd[2])
 log.success(io.recvuntil("it~"))

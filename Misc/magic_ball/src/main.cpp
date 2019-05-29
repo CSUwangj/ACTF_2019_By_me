@@ -88,7 +88,7 @@ int main() {
         continue;
       }
       if (all_input.back() >= rd[2]) {
-        cout << "Overflow index, what are you doing..." << endl;
+        cout << "Out of ranging index, what are you doing..." << endl;
         continue;
       }
       size_t left_weight = 0, right_weight = 0;
